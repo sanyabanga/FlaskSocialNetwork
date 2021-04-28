@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit post
+{% endblock %}
+
+
+{% block content_title %}
+    <p class="row justify-content-center mt-5"> 
+        Edit post
+    </p>
+{% endblock %}
+
+
+{% block content %}
+ <div class="row justify-content-center">
+    <div class="col-md-6">
+        <form action="{{ url_for('posts.edit_post', slug=post.slug) }}" method="POST">
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label(class='control-label') }}
+                    {{ field(class='form-control') }}
+                </div>
+            {% endfor %}
+            <div class="d-grid gap-2 mt-3">
+                <button type="submit" class="btn btn-outline-primary">Edit</button>   
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
